@@ -8,7 +8,7 @@ services:
   zabbix-proxy:
       image: zabbix/zabbix-proxy-sqlite3:ubuntu-5.2-latest
       ports:
-        - "10061:10051"
+        - '10051:10051'
       environment:
         # ZBX_HOSTNAME=zabbix-proxy-sqlite3
         # ZBX_PROXYMODE=0
@@ -81,7 +81,7 @@ services:
         - ./zbx_env/var/lib/zabbix/enc:/var/lib/zabbix/enc:ro
         - ./zbx_env/var/lib/zabbix/ssh_keys:/var/lib/zabbix/ssh_keys:ro
         - ./zbx_env/var/lib/zabbix/mibs:/var/lib/zabbix/mibs:ro
-        - snmptraps:/var/lib/zabbix/snmptraps:rw
+        #- snmptraps:/var/lib/zabbix/snmptraps:rw
         #- ./enc:/var/lib/zabbix/enc:ro
       restart: always
       networks:
