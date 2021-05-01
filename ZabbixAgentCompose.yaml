@@ -1,0 +1,64 @@
+version: "3.5"
+
+networks:
+  network-zabbix:
+    driver: bridge
+
+services:
+  zabbix-agent:
+      container_name: zabbix-agent
+      image: zabbix/zabbix-agent:ubuntu-5.2-latest
+      user: root
+      networks:
+        - network-zabbix
+      #links:
+        #- zabbix-server
+      restart: always
+      privileged: true
+      volumes:
+        - /etc/localtime:/etc/localtime:ro
+        - ./zbx_env/etc/zabbix/zabbix_agentd.d:/etc/zabbix/zabbix_agentd.d:ro
+        - ./zbx_env/var/lib/zabbix/modules:/var/lib/zabbix/modules:ro
+        - ./zbx_env/var/lib/zabbix/enc:/var/lib/zabbix/enc:ro
+        - ./zbx_env/var/lib/zabbix/ssh_keys:/var/lib/zabbix/ssh_keys:ro
+        #- /var/run:/var/run
+      ports:
+        - '10050:10050'
+      environment:
+        # ZBX_SOURCEIP=
+        # ZBX_DEBUGLEVEL=3
+        # ZBX_ENABLEREMOTECOMMANDS=0 # Deprecated since 5.0.0
+        # ZBX_LOGREMOTECOMMANDS=0
+        # ZBX_HOSTINTERFACE= # Available since 4.4.0
+        # ZBX_HOSTINTERFACEITEM= # Available since 4.4.0
+        - ZBX_SERVER_HOST=172.18.0.1
+        # ZBX_PASSIVE_ALLOW=true
+        # ZBX_PASSIVESERVERS=
+        # ZBX_ACTIVE_ALLOW=true
+        # ZBX_ACTIVESERVERS=
+        # ZBX_LISTENIP=
+        # ZBX_STARTAGENTS=3
+        - ZBX_HOSTNAME=Zabbix server
+        # ZBX_HOSTNAMEITEM=system.hostname
+        # ZBX_METADATA=
+        # ZBX_METADATAITEM=
+        # ZBX_REFRESHACTIVECHECKS=120
+        # ZBX_BUFFERSEND=5
+        # ZBX_BUFFERSIZE=100
+        # ZBX_MAXLINESPERSECOND=20
+        # ZBX_ALIAS=""
+        # ZBX_TIMEOUT=3
+        # ZBX_UNSAFEUSERPARAMETERS=0
+        # ZBX_LOADMODULE="dummy1.so,dummy2.so,dummy10.so"
+        # ZBX_TLSCONNECT=unencrypted
+        # ZBX_TLSACCEPT=unencrypted
+        # ZBX_TLSCAFILE=
+        # ZBX_TLSCRLFILE=
+        # ZBX_TLSSERVERCERTISSUER=
+        # ZBX_TLSSERVERCERTSUBJECT=
+        # ZBX_TLSCERTFILE=
+        # ZBX_TLSKEYFILE=
+        # ZBX_TLSPSKIDENTITY=
+        # ZBX_TLSPSKFILE=
+        # ZBX_DENYKEY=system.run[*]
+        # ZBX_ALLOWKEY=
