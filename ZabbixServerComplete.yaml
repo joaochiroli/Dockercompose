@@ -10,7 +10,7 @@ services:
     container_name: mysql-zabbix 
     restart: always
     ports:
-      - "3306:3306"
+      - '3306:3306'
     command:
       - mysqld
       - --character-set-server=utf8
@@ -48,7 +48,7 @@ services:
      - ./zbx_env/var/lib/zabbix/enc:/var/lib/zabbix/enc:ro
      - ./zbx_env/var/lib/zabbix/ssh_keys:/var/lib/zabbix/ssh_keys:ro
      - ./zbx_env/var/lib/zabbix/mibs:/var/lib/zabbix/mibs:ro
-     - snmptraps:/var/lib/zabbix/snmptraps:rw
+     #- snmptraps:/var/lib/zabbix/snmptraps:rw
       #- "./zabbix/alertscripts:/usr/lib/zabbix/alertscripts"
     environment:
       - MYSQL_ROOT_PASSWORD=secret
