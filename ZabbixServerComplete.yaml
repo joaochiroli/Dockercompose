@@ -24,7 +24,7 @@ services:
       - MYSQL_DATABASE=zabbix
       - MYSQL_USER=zabbix
       - MYSQL_PASSWORD=zabbix
-      - MYSQL_ROOT_PASSWORD_FILE=secret
+      #- MYSQL_ROOT_PASSWORD_FILE=secret
     networks:
       - network-zabbix
  
@@ -57,7 +57,7 @@ services:
       - MYSQL_USER=zabbix
       - MYSQL_PASSWORD=zabbix
       - MYSQL_DATABASE=zabbix
-      - MYSQL_ROOT_PASSWORD_FILE=secret
+      #- MYSQL_ROOT_PASSWORD_FILE=secret
     depends_on:
       - mysql-server
 
