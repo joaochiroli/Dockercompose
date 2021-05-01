@@ -38,7 +38,7 @@ services:
       - mysql
     restart: always
     ports:
-      - "10051:10051"
+      - '10051:10051'
     volumes:
      - /etc/localtime:/etc/localtime:ro
      - ./zbx_env/usr/lib/zabbix/alertscripts:/usr/lib/zabbix/alertscripts:ro
