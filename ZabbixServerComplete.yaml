@@ -59,7 +59,7 @@ services:
       - MYSQL_DATABASE=zabbix
       - MYSQL_ROOT_PASSWORD_FILE=secret
     depends_on:
-      - mysql
+      - mysql-server
 
   zabbix-frontend:
     container_name: zabbix-frontend
@@ -111,7 +111,7 @@ services:
       # ZBX_GUI_ACCESS_IP_RANGE=['127.0.0.1']
       # ZBX_GUI_WARNING_MSG=Zabbix is under maintenance.
     depends_on:
-      - mysql
+      - mysql-server
 
 
   zabbix-agent:
