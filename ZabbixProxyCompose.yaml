@@ -7,7 +7,7 @@ networks:
 services:
   zabbix-proxy:
       container_name: zabbix-proxy
-      image: zabbix/zabbix-proxyrestart: always-sqlite3:ubuntu-5.2-latest
+      image: zabbix/zabbix-proxy-sqlite3:ubuntu-5.2-latest
       restart: always
       ports:
         - '10051:10051'
